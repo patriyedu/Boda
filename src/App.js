@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 
+
 const MJ_APIKEY_PUBLIC = "415618f33c5a0e19c80f139bdd43cfbe";
 const MJ_APIKEY_PRIVATE = "ccf54f2a4661a313019ef3e695f55213";
 var SENDER_EMAIL = "elmanu911@gmail.com";
 var RECIPIENT_EMAIL = "manugc911@gmail.com";
-
-function App() {
 function sendEmail(){
 
   /**
@@ -38,6 +37,7 @@ function sendEmail(){
 
   fetch('https://api.mailjet.com/v3.1/send', {
     method: 'POST',
+    mode: "cors", 
     headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(MJ_APIKEY_PUBLIC+':'+MJ_APIKEY_PRIVATE)
@@ -64,6 +64,8 @@ function sendEmail(){
     })
 });
 }
+
+function App() {
 
 
   return (
