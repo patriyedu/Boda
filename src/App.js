@@ -77,7 +77,7 @@ function sendEmail(){
           className="App-link"
           onclick="sendEmail()"
           >
-          Learn React
+          Send Email
         </button>
       </header>
     </div>
