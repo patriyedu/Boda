@@ -73,13 +73,13 @@ function sendEmail(){
         <p>
          PATRI Y EDU
         </p>
-        <button
-          className="App-link"
-          onclick="sendEmail()"
+        
+      </header>
+      <button
+          onClick={sendEmail}
           >
           Send Email
         </button>
-      </header>
     </div>
   );
 }
