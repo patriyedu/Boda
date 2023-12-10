@@ -48,12 +48,12 @@ function sendEmail(){
         'Messages': [
             {
                 'From': {
-                    'Email': SENDER_EMAIL,
+                    'Email': 'manugc911@gmail.com',
                     'Name': 'Me'
                 },
                 'To': [
                     {
-                        'Email': RECIPIENT_EMAIL,
+                        'Email': 'elmanu911@gmail.com',
                         'Name': 'You'
                     }
                 ],
@@ -75,7 +75,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-         PATRIsia Y EDUardo
+         PATRI Y EDU
         </p>
         
       </header>
