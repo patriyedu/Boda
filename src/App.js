@@ -64,7 +64,7 @@ function sendEmail(){
         ]
     })
 });
-
+console.log(response);
 }
 
 function App() {
