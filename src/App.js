@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import React, { useEffect, useState } from "react";
 
 const MJ_APIKEY_PUBLIC = "415618f33c5a0e19c80f139bdd43cfbe";
 const MJ_APIKEY_PRIVATE = "ccf54f2a4661a313019ef3e695f55213";
@@ -35,15 +35,16 @@ function sendEmail(){
 	}'
    */
 
-  fetch('https://api.mailjet.com/v3.1/send', {
+  var response = fetch('https://api.mailjet.com/v3.1/send', {
     method: 'POST',
-    mode: "cors", 
+    mode: "no-cors", 
+    
     headers: {
+        'Origin': 'https://manugc911.github.io/patriyedu/',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + btoa(MJ_APIKEY_PUBLIC+':'+MJ_APIKEY_PRIVATE)
     },
-    // body: '{\n\t\t"Messages":[\n\t\t\t\t{\n\t\t\t\t\t\t"From": {\n\t\t\t\t\t\t\t\t"Email": "$SENDER_EMAIL",\n\t\t\t\t\t\t\t\t"Name": "Me"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t"To": [\n\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t"Email": "$RECIPIENT_EMAIL",\n\t\t\t\t\t\t\t\t\t\t"Name": "You"\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t],\n\t\t\t\t\t\t"Subject": "My first Mailjet Email!",\n\t\t\t\t\t\t"TextPart": "Greetings from Mailjet!",\n\t\t\t\t\t\t"HTMLPart": "Dear passenger 1, welcome to Mailjet!May the delivery force be with you!"\n\t\t\t\t}\n\t\t]\n\t}',
-    body: JSON.stringify({
+     body: JSON.stringify({
         'Messages': [
             {
                 'From': {
@@ -63,6 +64,7 @@ function sendEmail(){
         ]
     })
 });
+
 }
 
 function App() {
@@ -80,7 +82,7 @@ function App() {
       <button
           onClick={sendEmail}
           >
-          Send Email
+          Send Email cors
         </button>
     </div>
   );
