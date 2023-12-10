@@ -42,7 +42,7 @@ function sendEmail(){
     headers: {
         'Origin': 'https://manugc911.github.io/patriyedu/',
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa(MJ_APIKEY_PUBLIC+':'+MJ_APIKEY_PRIVATE)
+        'Authorization': 'Basic ' + btoa('415618f33c5a0e19c80f139bdd43cfbe:ccf54f2a4661a313019ef3e695f55213')
     },
      body: JSON.stringify({
         'Messages': [
