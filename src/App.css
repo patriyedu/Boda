@@ -1,3 +1,69 @@
+header span{
+  color:black;
+  margin:10px;
+}
+.btn_SendEmail{
+  margin:0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.title{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:80%;
+}
+@media only screen and (max-width: 600px) {
+  .css-1wnsr1i {
+    width: 65%!important;
+  }
+}
+footer{
+display: flex;
+justify-content: space-evenly;
+}
+
+.footerLeft{
+display: flex;
+
+}
+span.bold{
+  font-weight: 600;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+main{
+  align-items: center;
+  align-content: center;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px
+}
+main form{
+  width: 60%;
+  display: block;
+}
+main form .newRow{
+  align-items: center;
+  align-content: center;
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin:10px;
+}
+label{
+  color:#282c34;
+}
+label.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  color:#282c34;
+}
+label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
+  color:rgba(0, 0, 0, 0.38)!important;
+}
 .App {
   text-align: center;
 }
@@ -14,8 +80,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-image:none url("background.jpg");
+  background-repeat:no-repeat;
+  background-position: center;
+  min-height: 60vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
