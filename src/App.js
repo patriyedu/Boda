@@ -347,10 +347,12 @@ function App() {
 							</Box>
 						</Modal>
 					</div>
+					<br></br>
 					<Errors value={fromName==""} additionalValue="true" fieldname="tu nombre"></Errors>
 					<Errors value={fromSurName==""} additionalValue="true" fieldname="tus apellidos"></Errors>
 					<Errors value={from_companionName==""} additionalValue={from_companion_confirmation} fieldname="el nombre de tu acompañante"></Errors>
 					<Errors value={from_companionSurName==""} additionalValue={from_companion_confirmation} fieldname="los apellidos de tu acompañante"></Errors>
+					<br></br>
 					<div className='confirmarbtn'>
 						<Button  onClick={handleOpen}>Confirmar</Button>
 					</div>
