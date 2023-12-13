@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <link href="https://db.onlinewebfonts.com/c/b4d584ed0e53ba94a815f817690faab2?family=Brittany+Signature" rel="stylesheet"></link>
+    <link href="https://fonts.cdnfonts.com/css/antic-didone" rel="stylesheet"></link>
     <App />
   </React.StrictMode>
 );

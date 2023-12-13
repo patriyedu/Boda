@@ -9,6 +9,26 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+var ename = false;
+var esurname = false;
+var ecompname = false;
+var ecompsurname = false;
+
+const style = {
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 400,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+};
 
 function sendEmail() {
 
@@ -51,8 +71,39 @@ function sendEmail() {
 
 function App() {
 
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = (event) => {
+		ename=false;
+		esurname=false;
+		ecompname=false;
+		ecompsurname=false;
+		if (fromName == "") {
+			ename = true;
+		}
+		if (fromSurName == "") {
+				esurname = true;
+			}
+		if (from_companion_confirmation == "true") {
+					if (from_companionName=="") {
+						ecompname = true;
+					}
+					if (from_companionSurName == "") {
+						ecompsurname=true;
+						}
+		}
+		if(ename ==false &&esurname==false && ecompname == false && ecompsurname== false){
+			setOpen(true);
+		}	
+		else{
+			document.querySelector("form").focus();
+		}
+		console.log(ename+ " "+esurname+ " "+ecompname+ " "+ecompsurname)
+		
+	};
+	const handleClose = () => setOpen(false);
 
 	const [fromName, setfromName] = useState('');
+
 	const name_handleInputChange = (event) => {
 		setfromName(event.target.value);
 	};
@@ -63,7 +114,7 @@ function App() {
 	};
 
 	const [companionDisabled, setcompanionDisabled] = useState(false);
-	
+
 	const [from_companion_confirmation, setfrom_companion_confirmation] = useState('false');
 
 	const from_companion_confirmation_handleInputChange = (event) => {
@@ -120,48 +171,50 @@ function App() {
 	};
 	useEffect(() => {
 		setcompanionDisabled(true);
-	  }, []);
+	}, []);
 
 	return (
 		<div className="App">
 			<header className="App-header">
-				<span>
+				<span className='brittany'>
 					Eduardo y Patricia
 				</span>
-				<span>
-					Hemos decidio unirnos en un enlace iónico más fuerte y para celebrarlo, queremos que nos acompañeis el proximo. 
+				<span className='anticdidone parrafo'>
+					Hemos decidio unirnos en un enlace iónico más fuerte y para celebrarlo,<br></br> queremos que nos acompañeis el proximo.
 				</span>
 				<br></br>
-				<span>
+				<span className='date'>
 					27 | ABRIL | 2024
 				</span>
 				<br></br>
-				<span>
+				<span className='anticdidone'>
 					TORRE DE COTES, Alcoy (Alicante)
 				</span>
-				<span>
+				<span className='anticdidone'>
 					Apertura de puertas a las 12:45 h
 				</span>
-				<span >Confirma asistencia</span>
+				
 			</header>
 
 
 
 			<main>
-				<form>
-
+				<form tabIndex="-1" validate='true' autoComplete='on'>
+				<h3 >Confirma asistencia</h3>
 					<div className="newRow">
 						<TextField
+							error={ename}
 							required
-							id="outlined-required"
+							id="Nombre"
 							label="Nombre"
 							value={fromName}
 							onChange={name_handleInputChange}
 							helperText="Ej.Patricia"
 						/>
 						<TextField
+							error={esurname}
 							required
-							id="outlined-required"
+							id="Apellido"
 							label="Apellido/s"
 							onChange={surName_handleInputChange}
 							value={fromSurName}
@@ -169,6 +222,7 @@ function App() {
 						/>
 					</div>
 					<FormControlLabel
+						id="Acomapañante"
 						value={from_companion_confirmation}
 						control={<Switch color="primary" />}
 						defaultValue="false"
@@ -178,18 +232,20 @@ function App() {
 					/>
 					<div className="newRow">
 						<TextField
+						error={ecompname}
 							disabled={companionDisabled}
 							required
-							id="outlined-required"
+							id="Nombre_acompañante"
 							label="Nombre acompañante"
 							onChange={from_companionName_handleInputChange}
 							helperText="Ej.Eduardo"
 							value={from_companionName}
 						/>
 						<TextField
+						error={ecompsurname}
 							disabled={companionDisabled}
 							required
-							id="outlined-required"
+							id="Apellido_acompañante"
 							label="Appellido/s acompañante"
 							onChange={from_companionSurName_handleInputChange}
 							helperText="Ej.Gisbert"
@@ -197,6 +253,7 @@ function App() {
 						/>
 					</div>
 					<FormControlLabel
+						id="bus_confirmation"
 						value={bus_confirmation}
 						control={<Switch color="primary" />}
 						label="¿Quieres una plaza en el autobus?"
@@ -205,6 +262,7 @@ function App() {
 						onChange={bus_confirmation_handleInputChange}
 					/>
 					<FormControlLabel
+						id="hotel_confirmation"
 						value={hotel_confirmation}
 						control={<Switch color="primary" />}
 						label="¿Te quedas a dormir en el hotel?"
@@ -215,7 +273,7 @@ function App() {
 
 					<div className="newRow">
 						<TextField
-							id="outlined"
+							id="alergia"
 							label="¿Tienes alguna alergia?"
 							onChange={allergies_handleInputChange}
 							helperText="Ej.Al pescao"
@@ -225,7 +283,7 @@ function App() {
 
 					<div className="newRow">
 						<TextField
-							id="outlined-multiline-flexible"
+							id="musica"
 							label="¿Que música te gustaria escuchar?"
 							helperText="Ej.Jazz"
 							multiline
@@ -234,23 +292,78 @@ function App() {
 							value={music_recomendation}
 						/>
 					</div>
+					<div>
 
-					<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} bus_confirmation={bus_confirmation} allergies={allergies} hotel_confirmation={hotel_confirmation} music_recomendation={music_recomendation}  ></EmailSender>
+						<Modal
+							open={open}
+							onClose={handleClose}
+							aria-labelledby="modal-modal-title"
+							aria-describedby="modal-modal-description">
+							<Box sx={style}>
+								<Typography id="modal-modal-title" className="title" variant="h5" component="h2">
+									Confirma tus datos
+								</Typography>
+								<br></br><br></br>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									Nombre:<span className='bold'>{fromName}</span>
+								</Typography>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									Apellidos: <span className='bold'>{fromSurName}</span>
+								</Typography>
+
+								{from_companion_confirmation == "true" && (<React.Fragment>
+									<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+										Acompañante
+									</Typography>
+									<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+										Nombre: <span className='bold'>{from_companionName}</span>
+									</Typography>
+									<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+										Apellidos: <span className='bold'>{from_companionSurName}</span>
+									</Typography></React.Fragment>)}
+
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									¿Quieres una plaza en el autobus? <span className='bold'>{bus_confirmation == "true" ? "Si" : "No"}</span>
+								</Typography>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									¿Te quedas a dormir en el hotel? <span className='bold'>{hotel_confirmation == "true" ? "Si" : "No"}</span>
+								</Typography>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									¿Tienes alguna alergia? <span className='bold'>{allergies == "" ? "Ninguna" : allergies}</span>
+								</Typography>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									¿Que música te gustaria escuchar? <span className='bold'>{music_recomendation == "" ? "Me da igual" : music_recomendation}</span>
+								</Typography>
+								<br></br><br></br>
+								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} bus_confirmation={bus_confirmation} allergies={allergies} hotel_confirmation={hotel_confirmation} music_recomendation={music_recomendation}  ></EmailSender>
+
+							</Box>
+						</Modal>
+					</div>
+					<div className='error'>
+					{fromName==""&&<div>Rellena el nombre</div>}
+					{fromSurName==""&&<div>Rellena appelidos</div>}
+					{(from_companionName==""&&from_companion_confirmation)&&<div>Rellena el nombre de tu acompañante</div>}
+					{(from_companionSurName==""&&from_companion_confirmation)&&<div>Rellena los apellidos de tu acompañante</div>}
+					</div>
+					<div className='confirmarbtn'>
+						<Button  onClick={handleOpen}>Confirmar</Button>
+					</div>
 				</form>
 
 			</main>
 			<footer>
 				<div className='footerLeft'>
-				<span className='bold'>Patricia</span>
-				<span>666 66 66 66</span>
+					<span className='bold'>Patricia</span>
+					<span>618 32 30 09</span>
 				</div>
 				<div className='footerRight'>
-				<span className='bold'>Eduardo</span>
-				<span>666 66 66 66</span>
+					<span className='bold'>Eduardo</span>
+					<span>618 04 02 64</span>
 				</div>
 			</footer>
 		</div>
-	
+
 	);
 }
 
