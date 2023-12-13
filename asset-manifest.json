@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/patriyedu/static/css/main.bf37f5f6.css",
-    "main.js": "/patriyedu/static/js/main.b91df421.js",
+    "main.css": "/patriyedu/static/css/main.75258afb.css",
+    "main.js": "/patriyedu/static/js/main.e18f5662.js",
     "static/js/787.743b2da2.chunk.js": "/patriyedu/static/js/787.743b2da2.chunk.js",
     "static/media/background.jpg": "/patriyedu/static/media/background.d6e7df2c3e428436db5e.jpg",
     "static/media/logo.svg": "/patriyedu/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/patriyedu/index.html",
-    "main.bf37f5f6.css.map": "/patriyedu/static/css/main.bf37f5f6.css.map",
-    "main.b91df421.js.map": "/patriyedu/static/js/main.b91df421.js.map",
+    "main.75258afb.css.map": "/patriyedu/static/css/main.75258afb.css.map",
+    "main.e18f5662.js.map": "/patriyedu/static/js/main.e18f5662.js.map",
     "787.743b2da2.chunk.js.map": "/patriyedu/static/js/787.743b2da2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf37f5f6.css",
-    "static/js/main.b91df421.js"
+    "static/css/main.75258afb.css",
+    "static/js/main.e18f5662.js"
   ]
 }
