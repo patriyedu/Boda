@@ -12,6 +12,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Errors from './Errors';
 
 var ename = false;
 var esurname = false;
@@ -208,6 +209,7 @@ function App() {
 							id="Nombre"
 							label="Nombre"
 							value={fromName}
+							fullWidth
 							onChange={name_handleInputChange}
 							helperText="Ej.Patricia"
 						/>
@@ -218,6 +220,7 @@ function App() {
 							label="Apellido/s"
 							onChange={surName_handleInputChange}
 							value={fromSurName}
+							fullWidth
 							helperText="Ej.Garcia"
 						/>
 					</div>
@@ -239,6 +242,7 @@ function App() {
 							label="Nombre acompañante"
 							onChange={from_companionName_handleInputChange}
 							helperText="Ej.Eduardo"
+							fullWidth
 							value={from_companionName}
 						/>
 						<TextField
@@ -249,6 +253,7 @@ function App() {
 							label="Appellido/s acompañante"
 							onChange={from_companionSurName_handleInputChange}
 							helperText="Ej.Gisbert"
+							fullWidth
 							value={from_companionSurName}
 						/>
 					</div>
@@ -278,6 +283,7 @@ function App() {
 							onChange={allergies_handleInputChange}
 							helperText="Ej.Al pescao"
 							value={allergies}
+							fullWidth
 						/>
 					</div>
 
@@ -288,6 +294,7 @@ function App() {
 							helperText="Ej.Jazz"
 							multiline
 							maxRows={8}
+							fullWidth
 							onChange={music_recomendation_handleInputChange}
 							value={music_recomendation}
 						/>
@@ -340,12 +347,10 @@ function App() {
 							</Box>
 						</Modal>
 					</div>
-					<div className='error'>
-					{fromName==""&&<div>Rellena el nombre</div>}
-					{fromSurName==""&&<div>Rellena appelidos</div>}
-					{(from_companionName==""&&from_companion_confirmation)&&<div>Rellena el nombre de tu acompañante</div>}
-					{(from_companionSurName==""&&from_companion_confirmation)&&<div>Rellena los apellidos de tu acompañante</div>}
-					</div>
+					<Errors value={fromName==""} additionalValue="true" fieldname="tu nombre"></Errors>
+					<Errors value={fromSurName==""} additionalValue="true" fieldname="tus apellidos"></Errors>
+					<Errors value={from_companionName==""} additionalValue={from_companion_confirmation} fieldname="el nombre de tu acompañante"></Errors>
+					<Errors value={from_companionSurName==""} additionalValue={from_companion_confirmation} fieldname="los apellidos de tu acompañante"></Errors>
 					<div className='confirmarbtn'>
 						<Button  onClick={handleOpen}>Confirmar</Button>
 					</div>
