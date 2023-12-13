@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/patriyedu/static/css/main.78c75b53.css",
-    "main.js": "/patriyedu/static/js/main.0bda77be.js",
+    "main.js": "/patriyedu/static/js/main.6d06d214.js",
     "static/js/787.743b2da2.chunk.js": "/patriyedu/static/js/787.743b2da2.chunk.js",
     "static/media/background.jpg": "/patriyedu/static/media/background.d6e7df2c3e428436db5e.jpg",
     "static/media/logo.svg": "/patriyedu/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/patriyedu/index.html",
     "main.78c75b53.css.map": "/patriyedu/static/css/main.78c75b53.css.map",
-    "main.0bda77be.js.map": "/patriyedu/static/js/main.0bda77be.js.map",
+    "main.6d06d214.js.map": "/patriyedu/static/js/main.6d06d214.js.map",
     "787.743b2da2.chunk.js.map": "/patriyedu/static/js/787.743b2da2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.78c75b53.css",
-    "static/js/main.0bda77be.js"
+    "static/js/main.6d06d214.js"
   ]
 }
