@@ -204,7 +204,6 @@ function App() {
 				<h3 >Confirma asistencia</h3>
 					<div className="newRow">
 						<TextField
-							error={ename}
 							required
 							id="Nombre"
 							label="Nombre"
@@ -214,7 +213,6 @@ function App() {
 							helperText="Ej.Patricia"
 						/>
 						<TextField
-							error={esurname}
 							required
 							id="Apellido"
 							label="Apellido/s"
@@ -235,7 +233,6 @@ function App() {
 					/>
 					<div className="newRow">
 						<TextField
-						error={ecompname}
 							disabled={companionDisabled}
 							required
 							id="Nombre_acompañante"
@@ -246,7 +243,6 @@ function App() {
 							value={from_companionName}
 						/>
 						<TextField
-						error={ecompsurname}
 							disabled={companionDisabled}
 							required
 							id="Apellido_acompañante"

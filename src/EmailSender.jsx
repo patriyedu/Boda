@@ -13,6 +13,10 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
     
     
     function sendEmail() {
+
+        let companion_confirm= from_companion_confirmation.toString()=="true"?"Si":"No";
+        let bus_confirm= bus_confirmation.toString()=="true"?"Si":"No";
+        let hotel_confirm= hotel_confirmation.toString()=="true"?"Si":"No";
              data = {
             service_id: 'service_qq24ksv',
             template_id: 'template_ea0gcgr',
@@ -22,12 +26,12 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
                 'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...',
                 'from_name': fromName.toString(),
                 'from_surName': fromSurName.toString(),
-                'from_companion_confirmation': from_companion_confirmation.toString(),
+                'from_companion_confirmation': companion_confirm.toString(),
                 'from_companionName': from_companionName.toString(),
                 'from_companionSurName': from_companionSurName.toString(),
-                'bus_confirmation': bus_confirmation.toString(),
+                'bus_confirmation': bus_confirm.toString(),
                 'allergies': allergies.toString(),
-                'hotel_confirmation': hotel_confirmation.toString(),
+                'hotel_confirmation': hotel_confirm.toString(),
                 'music_recomendation': music_recomendation.toString(),
                 'message': 'my message',
                 'to_name': 'Edu y Patri'
