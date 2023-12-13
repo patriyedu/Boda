@@ -17,6 +17,7 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
         let companion_confirm= from_companion_confirmation.toString()=="true"?"Si":"No";
         let bus_confirm= bus_confirmation.toString()=="true"?"Si":"No";
         let hotel_confirm= hotel_confirmation.toString()=="true"?"Si":"No";
+        let music= music_recomendation.toString()==""?"N/A":music_recomendation.toString();
              data = {
             service_id: 'service_qq24ksv',
             template_id: 'template_ea0gcgr',
@@ -32,7 +33,7 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
                 'bus_confirmation': bus_confirm.toString(),
                 'allergies': allergies.toString(),
                 'hotel_confirmation': hotel_confirm.toString(),
-                'music_recomendation': music_recomendation.toString(),
+                'music_recomendation': music.toString(),
                 'message': 'my message',
                 'to_name': 'Edu y Patri'
             }
