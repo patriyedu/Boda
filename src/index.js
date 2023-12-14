@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Helmet } from 'react-helmet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <link href="https://db.onlinewebfonts.com/c/b4d584ed0e53ba94a815f817690faab2?family=Brittany+Signature" rel="stylesheet"></link>
-    <link href="https://fonts.cdnfonts.com/css/antic-didone" rel="stylesheet"></link>
+    <Helmet>
+      <link href="https://db.onlinewebfonts.com/c/b4d584ed0e53ba94a815f817690faab2?family=Brittany+Signature" rel="stylesheet"></link>
+      <link href="https://fonts.cdnfonts.com/css/antic-didone" rel="stylesheet"></link>
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"></link>
+      <title>Boda Patri y Edu - Confirma tu asistencia</title>
+    </Helmet>
+
     <App />
   </React.StrictMode>
 );
