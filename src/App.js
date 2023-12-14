@@ -340,7 +340,7 @@ function App() {
 									¿Que música te gustaria escuchar? <span className='bold'>{music_recomendation == "" ? "Me da igual" : music_recomendation}</span>
 								</Typography>
 								<br></br><br></br>
-								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} bus_confirmation={bus_confirmation} allergies={allergies} hotel_confirmation={hotel_confirmation} music_recomendation={music_recomendation}  ></EmailSender>
+								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} bus_confirmation={bus_confirmation} busvalue={busvalue} allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
 
 							</Box>
 						</Modal>

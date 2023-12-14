@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 var data = {};
 
 const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_companionName, 
-    from_companionSurName, bus_confirmation,allergies,hotel_confirmation,music_recomendation }) => {
+    from_companionSurName, bus_confirmation,busvalue,allergies,hotel_confirmation,hotelvalue,music_recomendation }) => {
 
     
     
@@ -31,8 +31,10 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
                 'from_companionName': from_companionName.toString(),
                 'from_companionSurName': from_companionSurName.toString(),
                 'bus_confirmation': bus_confirm.toString(),
+                'busvalue': busvalue.toString(),
                 'allergies': allergies.toString(),
                 'hotel_confirmation': hotel_confirm.toString(),
+                'hotelvalue':hotelvalue.toString(),
                 'music_recomendation': music.toString(),
                 'message': 'my message',
                 'to_name': 'Edu y Patri'

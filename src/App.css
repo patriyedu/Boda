@@ -6,13 +6,12 @@
   font-size: 1.2rem!important;
 }
 .whiteSpace{
-  height: 150px;
   width: 100vw;
   position: relative;
   display: block;
-  margin: 100px 0;
+  margin: 75px 0;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.727);
+  background-color: rgba(255, 255, 255, 0.67);
 }
 .error{
   color: rgba(224, 22, 22, 0.945);
@@ -36,6 +35,7 @@ header{
   font-family: "Brittany Signature";
   font-size: 5rem;
   z-index: 99999999;
+  margin: 50px 0!important;
 }
 .date{
  
@@ -155,6 +155,9 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
   }
 }
 @media only screen and (max-width: 600px) {
+  .whiteSpace{
+    padding: 10px 0;
+  }
   .css-1wnsr1i {
     width: 65%!important;
   }
@@ -172,6 +175,7 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
       font-family: "Brittany Signature";
       font-size: 3rem;
       margin-bottom: 3rem;
+         
     }
     .date{
       margin: 1.3rem;
