@@ -5,6 +5,15 @@
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   font-size: 1.2rem!important;
 }
+.whiteSpace{
+  height: 150px;
+  width: 100vw;
+  position: relative;
+  display: block;
+  margin: 100px 0;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.727);
+}
 .error{
   color: rgba(224, 22, 22, 0.945);
   font-weight: 500;
@@ -26,6 +35,7 @@ header{
 .brittany{
   font-family: "Brittany Signature";
   font-size: 5rem;
+  z-index: 99999999;
 }
 .date{
  
@@ -121,6 +131,8 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
   background-image: url("background.jpg");
   background-repeat:no-repeat;
   background-position:top;
+  background-size: cover;
+  background-position: right;
   min-height: 60vh; 
   display: flex;
   flex-direction: column;

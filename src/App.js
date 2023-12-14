@@ -177,9 +177,11 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
+				<div className='whiteSpace'>
 				<span className='brittany'>
 					Eduardo y Patricia
 				</span>
+				</div>
 				<span className='anticdidone parrafo'>
 					Hemos decidio unirnos en un enlace iónico más fuerte y para celebrarlo,<br></br> queremos que nos acompañeis el proximo.
 				</span>
