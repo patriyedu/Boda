@@ -131,9 +131,8 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
 .App-header {
   background-image: url("background.jpg");
   background-repeat:no-repeat;
-  background-position:top;
-  background-size: cover;
-  background-position: right;
+  background-size: 107%;
+  background-position: 5% 50%;
   min-height: 60vh; 
   display: flex;
   flex-direction: column;
