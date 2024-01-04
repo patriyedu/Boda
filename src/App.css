@@ -65,7 +65,8 @@ header span{
 footer{
 display: flex;
 justify-content: space-evenly;
-padding: 7px;
+padding: 0px;
+padding-bottom: 45px !important;;
 
 }
 

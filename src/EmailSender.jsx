@@ -15,7 +15,7 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
     function sendEmail() {
 
         let companion_confirm= from_companion_confirmation.toString()=="true"?"Si":"No";
-        let bus_confirm= bus_confirmation.toString()=="true"?"Si":"No";
+        let vegan= vegan.toString()=="true"?"Si":"No";
         let hotel_confirm= hotel_confirmation.toString()=="true"?"Si":"No";
         let music= music_recomendation.toString()==""?"N/A":music_recomendation.toString();
              data = {
@@ -30,8 +30,7 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
                 'from_companion_confirmation': companion_confirm.toString(),
                 'from_companionName': from_companionName.toString(),
                 'from_companionSurName': from_companionSurName.toString(),
-                'bus_confirmation': bus_confirm.toString(),
-                'busvalue': busvalue.toString(),
+                'vegan': vegan.toString(),
                 'allergies': allergies.toString(),
                 'hotel_confirmation': hotel_confirm.toString(),
                 'hotelvalue':hotelvalue.toString(),

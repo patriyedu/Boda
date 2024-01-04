@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Errors from './Errors';
+import Slider from '@mui/material/Slider';
 
 var ename = false;
 var esurname = false;
@@ -74,32 +75,32 @@ function App() {
 
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = (event) => {
-		ename=false;
-		esurname=false;
-		ecompname=false;
-		ecompsurname=false;
+		ename = false;
+		esurname = false;
+		ecompname = false;
+		ecompsurname = false;
 		if (fromName == "") {
 			ename = true;
 		}
 		if (fromSurName == "") {
-				esurname = true;
-			}
-		if (from_companion_confirmation == "true") {
-					if (from_companionName=="") {
-						ecompname = true;
-					}
-					if (from_companionSurName == "") {
-						ecompsurname=true;
-						}
+			esurname = true;
 		}
-		if(ename ==false &&esurname==false && ecompname == false && ecompsurname== false){
+		if (from_companion_confirmation == "true") {
+			if (from_companionName == "") {
+				ecompname = true;
+			}
+			if (from_companionSurName == "") {
+				ecompsurname = true;
+			}
+		}
+		if (ename == false && esurname == false && ecompname == false && ecompsurname == false) {
 			setOpen(true);
-		}	
-		else{
+		}
+		else {
 			document.querySelector("form").focus();
 		}
-		console.log(ename+ " "+esurname+ " "+ecompname+ " "+ecompsurname)
-		
+		console.log(ename + " " + esurname + " " + ecompname + " " + ecompsurname)
+
 	};
 	const handleClose = () => setOpen(false);
 
@@ -139,33 +140,68 @@ function App() {
 		setfrom_companionSurName(event.target.value);
 	};
 
+	const [busvalue, setBusValue] = React.useState([0]);
+
+	const handleBus = (event, newValue) => {
+		setBusValue(newValue);
+	};
+
 	const [bus_confirmation, setbus_confirmation] = useState('false');
 
 	const bus_confirmation_handleInputChange = (event) => {
 		if (event.target.value == "true") {
 			setbus_confirmation("false");
+			setBusValue(0);
 		}
 		else {
 			setbus_confirmation("true");
+			
+			if(from_companion_confirmation=="true") {
+				setBusValue(2);
+			}else{
+				setBusValue(1);
+			}
 		}
 	};
 
-	const [allergies, setallergies] = useState('');
-	const allergies_handleInputChange = (event) => {
-		setallergies(event.target.value);
-	};
+	const [hotelvalue, setHotelValue] = React.useState([0]);
 
+	const handleHotel = (event, newValue) => {
+		setHotelValue(newValue);
+	};
 	const [hotel_confirmation, sethotel_confirmation] = useState('false');
 
 	const hotel_confirmation_handleInputChange = (event) => {
 		if (event.target.value == "true") {
 			sethotel_confirmation("false");
+			setHotelValue(0);
 		}
 		else {
 			sethotel_confirmation("true");
+			if(from_companion_confirmation=="true") {
+				setHotelValue(2);
+			}else{
+				setHotelValue(1);
+			}
 		}
 	};
 
+	
+	const [allergies, setallergies] = useState('');
+	const allergies_handleInputChange = (event) => {
+		setallergies(event.target.value);
+	};
+
+	const [vegan, setVegan] = useState('false');
+
+	const vegan_handleInputChange = (event) => {
+		if (event.target.value == "true") {
+			setVegan("false");
+		}
+		else {
+			setVegan("true");
+		}
+	};
 	const [music_recomendation, setmusic_recomendation] = useState('');
 	const music_recomendation_handleInputChange = (event) => {
 		setmusic_recomendation(event.target.value);
@@ -178,12 +214,12 @@ function App() {
 		<div className="App">
 			<header className="App-header">
 				<div className='whiteSpace'>
-				<span className='brittany'>
-					Eduardo y Patricia
-				</span>
+					<span className='brittany'>
+						Eduardo y Patricia
+					</span>
 				</div>
 				<span className='anticdidone parrafo'>
-					Hemos decidio unirnos en un enlace iónico más fuerte y para celebrarlo,<br></br> queremos que nos acompañeis el proximo.
+					Hemos decidido unirnos en un enlace iónico más fuerte y, para celebrarlo,<br></br> queremos que nos acompañéis el próximo
 				</span>
 				<br></br>
 				<span className='date'>
@@ -196,14 +232,17 @@ function App() {
 				<span className='anticdidone'>
 					Apertura de puertas a las 12:45 h
 				</span>
-				
+				<span className='anticdidone'>
+					La química une... y mucho
+				</span>
+
 			</header>
 
 
 
 			<main>
 				<form tabIndex="-1" validate='true' autoComplete='on'>
-				<h3 >Confirma asistencia</h3>
+					<h3 >Confirma asistencia</h3>
 					<div className="newRow">
 						<TextField
 							required
@@ -212,16 +251,16 @@ function App() {
 							value={fromName}
 							fullWidth
 							onChange={name_handleInputChange}
-							helperText="Ej.Patricia"
+							helperText=""
 						/>
 						<TextField
 							required
 							id="Apellido"
-							label="Apellido/s"
+							label="Apellidos"
 							onChange={surName_handleInputChange}
 							value={fromSurName}
 							fullWidth
-							helperText="Ej.Garcia"
+							helperText=""
 						/>
 					</div>
 					<FormControlLabel
@@ -240,7 +279,7 @@ function App() {
 							id="Nombre_acompañante"
 							label="Nombre acompañante"
 							onChange={from_companionName_handleInputChange}
-							helperText="Ej.Eduardo"
+							helperText=""
 							fullWidth
 							value={from_companionName}
 						/>
@@ -248,48 +287,59 @@ function App() {
 							disabled={companionDisabled}
 							required
 							id="Apellido_acompañante"
-							label="Appellido/s acompañante"
+							label="Appellidos acompañante"
 							onChange={from_companionSurName_handleInputChange}
-							helperText="Ej.Gisbert"
+							helperText=""
 							fullWidth
 							value={from_companionSurName}
 						/>
 					</div>
-					<FormControlLabel
-						id="bus_confirmation"
-						value={bus_confirmation}
-						control={<Switch color="primary" />}
-						label="¿Quieres una plaza en el autobus?"
-						labelPlacement="start"
-						defaultValue="false"
-						onChange={bus_confirmation_handleInputChange}
-					/>
+					
 					<FormControlLabel
 						id="hotel_confirmation"
 						value={hotel_confirmation}
 						control={<Switch color="primary" />}
-						label="¿Te quedas a dormir en el hotel?"
+						label="¿Necesitas o quieres quedarte a dormir?"
 						labelPlacement="start"
 						defaultValue="false"
 						onChange={hotel_confirmation_handleInputChange}
 					/>
+					<div>
+						<span className='cuantas'>¿Cuántos sois? {hotelvalue}</span>
+						<div className='slider'><Slider
+							disabled={hotel_confirmation == "false"}
+							getAriaLabel={() => '¿Cuantos sois?'}
+							max={10}
+							value={hotelvalue}
+							onChange={handleHotel}
+							valueLabelDisplay="¿Cuantos sois?"
 
+						/></div>
+					</div>
 					<div className="newRow">
 						<TextField
 							id="alergia"
-							label="¿Tienes alguna alergia?"
+							label="¿Alergias, intolerancias o embarazo/lactancia?"
 							onChange={allergies_handleInputChange}
-							helperText="Ej.Al pescao"
+							helperText="Indica el nombre de la persona."
 							value={allergies}
 							fullWidth
 						/>
 					</div>
-
+					<FormControlLabel
+						id="vegan"
+						value={hotel_confirmation}
+						control={<Switch color="primary" />}
+						label="¿Eres vegano?"
+						labelPlacement="start"
+						defaultValue="false"
+						onChange={vegan_handleInputChange}
+					/>
 					<div className="newRow">
 						<TextField
 							id="musica"
-							label="¿Que música te gustaria escuchar?"
-							helperText="Ej.Jazz"
+							label="¿Qué canciones te gustaría escuchar?"
+							helperText=""
 							multiline
 							maxRows={8}
 							fullWidth
@@ -327,32 +377,36 @@ function App() {
 										Apellidos: <span className='bold'>{from_companionSurName}</span>
 									</Typography></React.Fragment>)}
 
+								
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
-									¿Quieres una plaza en el autobus? <span className='bold'>{bus_confirmation == "true" ? "Si" : "No"}</span>
+								¿Necesitas o quieres quedarte a dormir? <span className='bold'>{hotel_confirmation == "true" ? "Si" : "No"}</span>
 								</Typography>
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
-									¿Te quedas a dormir en el hotel? <span className='bold'>{hotel_confirmation == "true" ? "Si" : "No"}</span>
+									¿Cuántos sois? <span className='bold'>{hotelvalue}</span>
 								</Typography>
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
-									¿Tienes alguna alergia? <span className='bold'>{allergies == "" ? "Ninguna" : allergies}</span>
+									¿Alergias, intolerancias o embarazo/lactancia? <span className='bold'>{allergies == "" ? "Ninguna" : allergies}</span>
 								</Typography>
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
-									¿Que música te gustaria escuchar? <span className='bold'>{music_recomendation == "" ? "Me da igual" : music_recomendation}</span>
+									¿Eres vegano? <span className='bold'>{vegan == "true" ? "Si" : "No"}</span>
+								</Typography>
+								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
+									¿Que canciones te gustaria escuchar? <span className='bold'>{music_recomendation == "" ? "Me da igual" : music_recomendation}</span>
 								</Typography>
 								<br></br><br></br>
-								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} bus_confirmation={bus_confirmation} busvalue={busvalue} allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
+								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} vegan={vegan}  allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
 
 							</Box>
 						</Modal>
 					</div>
 					<br></br>
-					<Errors value={fromName==""} additionalValue="true" fieldname="tu nombre"></Errors>
-					<Errors value={fromSurName==""} additionalValue="true" fieldname="tus apellidos"></Errors>
-					<Errors value={from_companionName==""} additionalValue={from_companion_confirmation} fieldname="el nombre de tu acompañante"></Errors>
-					<Errors value={from_companionSurName==""} additionalValue={from_companion_confirmation} fieldname="los apellidos de tu acompañante"></Errors>
+					<Errors value={fromName == ""} additionalValue="true" fieldname="tu nombre"></Errors>
+					<Errors value={fromSurName == ""} additionalValue="true" fieldname="tus apellidos"></Errors>
+					<Errors value={from_companionName == ""} additionalValue={from_companion_confirmation} fieldname="el nombre de tu acompañante"></Errors>
+					<Errors value={from_companionSurName == ""} additionalValue={from_companion_confirmation} fieldname="los apellidos de tu acompañante"></Errors>
 					<br></br>
 					<div className='confirmarbtn'>
-						<Button  onClick={handleOpen}>Confirmar</Button>
+						<Button onClick={handleOpen}>Confirmar</Button>
 					</div>
 				</form>
 
