@@ -8,14 +8,14 @@ import Button from '@mui/material/Button';
 var data = {};
 
 const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_companionName, 
-    from_companionSurName, bus_confirmation,busvalue,allergies,hotel_confirmation,hotelvalue,music_recomendation }) => {
+    from_companionSurName, vegan,allergies,hotel_confirmation,hotelvalue,music_recomendation }) => {
 
     
     
     function sendEmail() {
 
         let companion_confirm= from_companion_confirmation.toString()=="true"?"Si":"No";
-        let vegan= vegan.toString()=="true"?"Si":"No";
+        let vegan_confirm= vegan.toString()=="true"?"Si":"No";
         let hotel_confirm= hotel_confirmation.toString()=="true"?"Si":"No";
         let music= music_recomendation.toString()==""?"N/A":music_recomendation.toString();
              data = {
@@ -30,7 +30,7 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
                 'from_companion_confirmation': companion_confirm.toString(),
                 'from_companionName': from_companionName.toString(),
                 'from_companionSurName': from_companionSurName.toString(),
-                'vegan': vegan.toString(),
+                'vegan': vegan_confirm.toString(),
                 'allergies': allergies.toString(),
                 'hotel_confirmation': hotel_confirm.toString(),
                 'hotelvalue':hotelvalue.toString(),
@@ -46,12 +46,12 @@ const EmailSender = ({ fromName, fromSurName, from_companion_confirmation, from_
             contentType: 'application/json'
         })
             .done(function () {
-                console.log('Your mail is sent!');
+                //console.log('Your mail is sent!');
                 window.location.reload();
             })
             .fail(function (error) {
                 if (data != {}) {
-                    console.log('Oops... ' + JSON.stringify(error));
+                    //console.log('Oops... ' + JSON.stringify(error));
                 }
             });
     }

@@ -65,7 +65,7 @@ function sendEmail() {
 			]
 		})
 	});
-	console.log(response);
+	//console.log(response);
 
 
 }
@@ -99,7 +99,7 @@ function App() {
 		else {
 			document.querySelector("form").focus();
 		}
-		console.log(ename + " " + esurname + " " + ecompname + " " + ecompsurname)
+		//console.log(ename + " " + esurname + " " + ecompname + " " + ecompsurname)
 
 	};
 	const handleClose = () => setOpen(false);
@@ -287,7 +287,7 @@ function App() {
 							disabled={companionDisabled}
 							required
 							id="Apellido_acompañante"
-							label="Appellidos acompañante"
+							label="Apellidos acompañante"
 							onChange={from_companionSurName_handleInputChange}
 							helperText=""
 							fullWidth
