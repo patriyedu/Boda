@@ -5,11 +5,11 @@ import Button from '@mui/material/Button';
 
 
 const Errors = ({ value, additionalValue, fieldname }) => {
-    console.log(value+"  "+additionalValue);
-    console.log(typeof value+"  "+ typeof additionalValue);
+    //console.log(value+"  "+additionalValue);
+    //console.log(typeof value+"  "+ typeof additionalValue);
     
     if (value==true & additionalValue=='true') {
-        console.log("IN");
+        //console.log("IN");
         return (
                 <div className='error'>
                     Rellena {fieldname}

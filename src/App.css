@@ -1,9 +1,28 @@
+.MuiTextField-root{
+  margin-bottom: 5px!important;
+}
+
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
   font-size: 1.2rem;
   background-color: rgba(25, 118, 210, 0.164)!important;
 }
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   font-size: 1.2rem!important;
+}
+section{
+  margin-bottom: 15px;
+  border-bottom: 1px solid #828283;
+
+
+}
+
+
+.asistenteText{
+  font-weight: 600;
+  display: flex;
+  margin-left: 15px;
+  
+  align-items: flex-start;
 }
 .whiteSpace{
   width: 100vw;
@@ -88,13 +107,13 @@ main{
   flex-wrap: wrap;
   margin-bottom: 25px
 }
-main form{
+main #form{
   width: 50%;
   display: block;
   margin: 15px;
   margin-bottom: 0;
 }
-main form .newRow{
+main #form .newRow{
   align-items: center;
   align-content: center;
   display:flex;
@@ -155,6 +174,9 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
   }
 }
 @media only screen and (max-width: 600px) {
+  iframe{
+    width:100%
+  }
   .whiteSpace{
     padding: 10px 0;
   }
@@ -189,12 +211,12 @@ label.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
       max-width: 90%;
       font-size: 16px;
     }
-    main form{
+    main #form{
       width: 92%;
       display: block;
       margin: 15px;
     }
-    main form .newRow{
+    main #form .newRow{
       align-items: center;
       align-content: center;
       display:flex;

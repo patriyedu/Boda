@@ -14,6 +14,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Errors from './Errors';
 import Slider from '@mui/material/Slider';
+import Person from './Person';
+import Person1 from './Person1';
+import $ from 'jquery'; // Import jQuery
+import { toast, ToastContainer } from 'react-toastify'
 
 var ename = false;
 var esurname = false;
@@ -32,42 +36,86 @@ const style = {
 	p: 4,
 };
 
-function sendEmail() {
 
 
 
-	var response = fetch('https://api.mailjet.com/v3.1/send', {
-		method: 'POST',
-		mode: "no-cors",
+var person = {
+	name: '',
+	surname: '',
+	hotel: '',
+	allergies: '',
+	vegan: '',
+	music: '',
+	number: 0
+}
+var people = [person, person, person, person, person];
 
-		headers: {
-			'Origin': 'https://manugc911.github.io/patriyedu/',
-			'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + btoa('415618f33c5a0e19c80f139bdd43cfbe:ccf54f2a4661a313019ef3e695f55213')
-		},
-		body: JSON.stringify({
-			'Messages': [
-				{
-					'From': {
-						'Email': 'manugc911@proton.me',
-						'Name': 'Me'
-					},
-					'To': [
-						{
-							'Email': 'manugc911@gmail.com',
-							'Name': 'You'
-						}
-					],
-					'Subject': 'My first Mailjet Email!',
-					'TextPart': 'Greetings from Mailjet!',
-					'HTMLPart': 'Dear passenger 1, welcome to Mailjet!May the delivery force be with you!'
-				}
-			]
+function sendEmail(event) {
+	event.preventDefault();
+	let data = {};
+	data = {
+		service_id: 'service_qq24ksv',
+		template_id: 'template_a8dl0fs',
+		user_id: 'YZViRN9m5r1G0p3jB',
+		template_params: {
+			'username': 'Manu',
+			'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...',
+			'name1': people[0].name,
+			'surname1': people[0].surname,
+			'vegan1': people[0].vegan,
+			'allergies1': people[0].allergies,
+			'hotel1': people[0].hotel,
+			'music1': people[0].music,
+
+			'name2': people[1].name,
+			'surname2': people[1].surname,
+			'vegan2': people[1].vegan,
+			'allergies2': people[1].allergies,
+			'hotel2': people[1].hotel,
+			'music2': people[1].music,
+
+			'name3': people[2].name.toString(),
+			'surname3': people[2].surname.toString(),
+			'vegan3': people[2].vegan.toString(),
+			'allergies3': people[2].allergies.toString(),
+			'hotel3': people[2].hotel.toString(),
+			'music3': people[2].music.toString(),
+
+			'name4': people[3].name.toString(),
+			'surname4': people[3].surname.toString(),
+			'vegan4': people[3].vegan.toString(),
+			'allergies4': people[3].allergies.toString(),
+			'hotel4': people[3].hotel.toString(),
+			'music4': people[3].music.toString(),
+
+			'name5': people[4].name.toString(),
+			'surname5': people[4].surname.toString(),
+			'vegan5': people[4].vegan.toString(),
+			'allergies5': people[4].allergies.toString(),
+			'hotel5': people[4].hotel.toString(),
+			'music5': people[4].music.toString()
+		}
+	};
+	console.log(data.template_params);
+
+	$.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+		type: 'POST',
+		data: JSON.stringify(data),
+		contentType: 'application/json'
+	})
+		.done(function () {
+			console.log('Your mail is sent!');
+			window.location.reload();
 		})
-	});
-	//console.log(response);
-
-
+		.fail(function (error) {
+			if (data != {}) {
+				console.log('Oops... ' + JSON.stringify(error));
+			}
+		});
+}
+function increment() {
+	console.log("miauuu")
+	toast('miauuuuuuu');
 }
 
 
@@ -75,7 +123,7 @@ function App() {
 
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = (event) => {
-		ename = false;
+		/*ename = false;
 		esurname = false;
 		ecompname = false;
 		ecompsurname = false;
@@ -100,115 +148,55 @@ function App() {
 			document.querySelector("form").focus();
 		}
 		//console.log(ename + " " + esurname + " " + ecompname + " " + ecompsurname)
-
+*/
 	};
 	const handleClose = () => setOpen(false);
-
-	const [fromName, setfromName] = useState('');
-
-	const name_handleInputChange = (event) => {
-		setfromName(event.target.value);
-	};
-
-	const [fromSurName, setfromSurName] = useState('');
-	const surName_handleInputChange = (event) => {
-		setfromSurName(event.target.value);
-	};
-
-	const [companionDisabled, setcompanionDisabled] = useState(false);
-
-	const [from_companion_confirmation, setfrom_companion_confirmation] = useState('false');
-
-	const from_companion_confirmation_handleInputChange = (event) => {
-		if (event.target.value == "true") {
-			setfrom_companion_confirmation("false");
-			setcompanionDisabled(true);
-		}
-		else {
-			setfrom_companion_confirmation("true");
-			setcompanionDisabled(false);
-		}
-	};
-
-	const [from_companionName, setfrom_companionName] = useState('');
-	const from_companionName_handleInputChange = (event) => {
-		setfrom_companionName(event.target.value);
-	};
-
-	const [from_companionSurName, setfrom_companionSurName] = useState('');
-	const from_companionSurName_handleInputChange = (event) => {
-		setfrom_companionSurName(event.target.value);
-	};
-
-	const [busvalue, setBusValue] = React.useState([0]);
-
-	const handleBus = (event, newValue) => {
-		setBusValue(newValue);
-	};
-
-	const [bus_confirmation, setbus_confirmation] = useState('false');
-
-	const bus_confirmation_handleInputChange = (event) => {
-		if (event.target.value == "true") {
-			setbus_confirmation("false");
-			setBusValue(0);
-		}
-		else {
-			setbus_confirmation("true");
-			
-			if(from_companion_confirmation=="true") {
-				setBusValue(2);
-			}else{
-				setBusValue(1);
-			}
-		}
-	};
-
-	const [hotelvalue, setHotelValue] = React.useState([0]);
-
-	const handleHotel = (event, newValue) => {
-		setHotelValue(newValue);
-	};
-	const [hotel_confirmation, sethotel_confirmation] = useState('false');
-
-	const hotel_confirmation_handleInputChange = (event) => {
-		if (event.target.value == "true") {
-			sethotel_confirmation("false");
-			setHotelValue(0);
-		}
-		else {
-			sethotel_confirmation("true");
-			if(from_companion_confirmation=="true") {
-				setHotelValue(2);
-			}else{
-				setHotelValue(1);
-			}
-		}
-	};
-
+	/*
+		const [person, setPerson] = React.useState([]);
+		const handlePerson = () => {
+			//people.push(person);
+			setPerson(
+				person = {
+					name: '',
+					surname: '',
+					hotel: '',
+					allergies: '',
+					vegan: '',
+					music: ''
+				}
+			);
 	
-	const [allergies, setallergies] = useState('');
-	const allergies_handleInputChange = (event) => {
-		setallergies(event.target.value);
-	};
+		};
+	*/
 
-	const [vegan, setVegan] = useState('false');
 
-	const vegan_handleInputChange = (event) => {
-		if (event.target.value == "true") {
-			setVegan("false");
+	const addPerson = (person) => {
+		if (people.length <= person.number) {
+			people.push(person);
 		}
 		else {
-			setVegan("true");
+			people[person.number] = person;
 		}
-	};
-	const [music_recomendation, setmusic_recomendation] = useState('');
-	const music_recomendation_handleInputChange = (event) => {
-		setmusic_recomendation(event.target.value);
-	};
-	useEffect(() => {
-		setcompanionDisabled(true);
-	}, []);
+
+	}
+	const [peopleNum, setPeopleNum] = React.useState(1);
+
+	const incrementPeople = () => {
+		if (peopleNum < 5) {
+			setPeopleNum(peopleNum + 1);
+
+			setTimeout(() => {
+				document.getElementById("Nombre" + peopleNum).focus();
+			}, 200)
+		} else {
+
+			toast('Máximo 5 asistentes');
+		}
+
+	}
+
+
+
 
 	return (
 		<div className="App">
@@ -237,117 +225,32 @@ function App() {
 				</span>
 
 			</header>
-
-
+			<h3 >¿Donde se celebra?</h3>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.2995908488037!2d-0.4806974234437006!3d38.71093017176449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6186434820c017%3A0xf9305f256ae7e6e8!2sRestaurante%20Torre%20de%20Cotes!5e0!3m2!1ses!2ses!4v1704978022935!5m2!1ses!2ses" width="600" height="450" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 			<main>
-				<form tabIndex="-1" validate='true' autoComplete='on'>
-					<h3 >Confirma asistencia</h3>
-					<div className="newRow">
-						<TextField
-							required
-							id="Nombre"
-							label="Nombre"
-							value={fromName}
-							fullWidth
-							onChange={name_handleInputChange}
-							helperText=""
-						/>
-						<TextField
-							required
-							id="Apellido"
-							label="Apellidos"
-							onChange={surName_handleInputChange}
-							value={fromSurName}
-							fullWidth
-							helperText=""
-						/>
-					</div>
-					<FormControlLabel
-						id="Acomapañante"
-						value={from_companion_confirmation}
-						control={<Switch color="primary" />}
-						defaultValue="false"
-						label="Acomapañante"
-						labelPlacement="start"
-						onChange={from_companion_confirmation_handleInputChange}
-					/>
-					<div className="newRow">
-						<TextField
-							disabled={companionDisabled}
-							required
-							id="Nombre_acompañante"
-							label="Nombre acompañante"
-							onChange={from_companionName_handleInputChange}
-							helperText=""
-							fullWidth
-							value={from_companionName}
-						/>
-						<TextField
-							disabled={companionDisabled}
-							required
-							id="Apellido_acompañante"
-							label="Apellidos acompañante"
-							onChange={from_companionSurName_handleInputChange}
-							helperText=""
-							fullWidth
-							value={from_companionSurName}
-						/>
-					</div>
-					
-					<FormControlLabel
-						id="hotel_confirmation"
-						value={hotel_confirmation}
-						control={<Switch color="primary" />}
-						label="¿Necesitas o quieres quedarte a dormir?"
-						labelPlacement="start"
-						defaultValue="false"
-						onChange={hotel_confirmation_handleInputChange}
-					/>
-					<div>
-						<span className='cuantas'>¿Cuántos sois? {hotelvalue}</span>
-						<div className='slider'><Slider
-							disabled={hotel_confirmation == "false"}
-							getAriaLabel={() => '¿Cuantos sois?'}
-							max={10}
-							value={hotelvalue}
-							onChange={handleHotel}
-							valueLabelDisplay="¿Cuantos sois?"
+				<div tabIndex="-1" validate='true' autoComplete='on' id="form">
 
-						/></div>
-					</div>
-					<div className="newRow">
-						<TextField
-							id="alergia"
-							label="¿Alergias, intolerancias o embarazo/lactancia?"
-							onChange={allergies_handleInputChange}
-							helperText="Indica el nombre de la persona."
-							value={allergies}
-							fullWidth
-						/>
-					</div>
-					<FormControlLabel
-						id="vegan"
-						value={hotel_confirmation}
-						control={<Switch color="primary" />}
-						label="¿Eres vegano?"
-						labelPlacement="start"
-						defaultValue="false"
-						onChange={vegan_handleInputChange}
-					/>
-					<div className="newRow">
-						<TextField
-							id="musica"
-							label="¿Qué canciones te gustaría escuchar?"
-							helperText=""
-							multiline
-							maxRows={8}
-							fullWidth
-							onChange={music_recomendation_handleInputChange}
-							value={music_recomendation}
-						/>
+					<h3 >Confirma asistencia</h3>
+					{Array.from({ length: peopleNum }, (_, i) =>
+
+						<Person1 addPerson={addPerson} key={i} number={i}></Person1>
+					)}
+
+					<div className='addPersonbtn'>
+						<Button onClick={incrementPeople}>Añadir Acompañante</Button>
+
 					</div>
 					<div>
+						{/*
+						
+
+name3={name3} surName3={surName3} vegan3={vegan3} allergies3={allergies3} hotel3={hotel3} music3={music3}
+					name4={name4} surName4={surName4} vegan4={vegan4} allergies4={allergies4} hotel4={hotel4} music4={music4}
+					name5={name5} surName5={surName5} vegan5={vegan5} allergies5={allergies5} hotel5={hotel5} music5={music5}
+
+						<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} vegan={vegan} allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
+<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} vegan={vegan} allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
 
 						<Modal
 							open={open}
@@ -377,9 +280,9 @@ function App() {
 										Apellidos: <span className='bold'>{from_companionSurName}</span>
 									</Typography></React.Fragment>)}
 
-								
+
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
-								¿Necesitas o quieres quedarte a dormir? <span className='bold'>{hotel_confirmation == "true" ? "Si" : "No"}</span>
+									¿Necesitas o quieres quedarte a dormir? <span className='bold'>{hotel_confirmation == "true" ? "Si" : "No"}</span>
 								</Typography>
 								<Typography id="modal-modal-description" sx={{ mt: 1 }}>
 									¿Cuántos sois? <span className='bold'>{hotelvalue}</span>
@@ -394,22 +297,24 @@ function App() {
 									¿Que canciones te gustaria escuchar? <span className='bold'>{music_recomendation == "" ? "Me da igual" : music_recomendation}</span>
 								</Typography>
 								<br></br><br></br>
-								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} vegan={vegan}  allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
+								<EmailSender fromName={fromName} fromSurName={fromSurName} from_companion_confirmation={from_companion_confirmation} from_companionName={from_companionName} from_companionSurName={from_companionSurName} vegan={vegan} allergies={allergies} hotel_confirmation={hotel_confirmation} hotelvalue={hotelvalue} music_recomendation={music_recomendation}  ></EmailSender>
 
 							</Box>
 						</Modal>
+						
 					</div>
 					<br></br>
 					<Errors value={fromName == ""} additionalValue="true" fieldname="tu nombre"></Errors>
 					<Errors value={fromSurName == ""} additionalValue="true" fieldname="tus apellidos"></Errors>
 					<Errors value={from_companionName == ""} additionalValue={from_companion_confirmation} fieldname="el nombre de tu acompañante"></Errors>
 					<Errors value={from_companionSurName == ""} additionalValue={from_companion_confirmation} fieldname="los apellidos de tu acompañante"></Errors>
-					<br></br>
-					<div className='confirmarbtn'>
-						<Button onClick={handleOpen}>Confirmar</Button>
+					<br></br>*/}
+						<div className='confirmarbtn'>
+							<Button variant='contained' onClick={sendEmail}>Enviar</Button>
+						</div>
 					</div>
-				</form>
-
+				</div>
+				<ToastContainer></ToastContainer>
 			</main>
 			<footer>
 				<div className='footerLeft'>
@@ -420,6 +325,8 @@ function App() {
 					<span className='bold'>Eduardo</span>
 					<span>618 04 02 64</span>
 				</div>
+
+				
 			</footer>
 		</div>
 
