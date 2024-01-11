@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Boda/static/css/main.af4de4d2.css",
-    "main.js": "/Boda/static/js/main.6167983a.js",
+    "main.css": "/Boda/static/css/main.dcd3d290.css",
+    "main.js": "/Boda/static/js/main.c0b2f630.js",
     "static/js/787.743b2da2.chunk.js": "/Boda/static/js/787.743b2da2.chunk.js",
     "static/media/background.jpg": "/Boda/static/media/background.d6e7df2c3e428436db5e.jpg",
     "static/media/logo.svg": "/Boda/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Boda/index.html",
-    "main.af4de4d2.css.map": "/Boda/static/css/main.af4de4d2.css.map",
-    "main.6167983a.js.map": "/Boda/static/js/main.6167983a.js.map",
+    "main.dcd3d290.css.map": "/Boda/static/css/main.dcd3d290.css.map",
+    "main.c0b2f630.js.map": "/Boda/static/js/main.c0b2f630.js.map",
     "787.743b2da2.chunk.js.map": "/Boda/static/js/787.743b2da2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.af4de4d2.css",
-    "static/js/main.6167983a.js"
+    "static/css/main.dcd3d290.css",
+    "static/js/main.c0b2f630.js"
   ]
 }
