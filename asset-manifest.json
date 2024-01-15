@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Boda/static/css/main.2b04a511.css",
-    "main.js": "/Boda/static/js/main.dcf8dcf6.js",
+    "main.js": "/Boda/static/js/main.fb637717.js",
     "static/js/787.743b2da2.chunk.js": "/Boda/static/js/787.743b2da2.chunk.js",
     "static/media/background.jpg": "/Boda/static/media/background.d6e7df2c3e428436db5e.jpg",
     "static/media/logo.svg": "/Boda/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Boda/index.html",
     "main.2b04a511.css.map": "/Boda/static/css/main.2b04a511.css.map",
-    "main.dcf8dcf6.js.map": "/Boda/static/js/main.dcf8dcf6.js.map",
+    "main.fb637717.js.map": "/Boda/static/js/main.fb637717.js.map",
     "787.743b2da2.chunk.js.map": "/Boda/static/js/787.743b2da2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2b04a511.css",
-    "static/js/main.dcf8dcf6.js"
+    "static/js/main.fb637717.js"
   ]
 }
